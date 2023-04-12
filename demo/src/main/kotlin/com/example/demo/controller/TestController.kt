@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 class TestController(
 
     private val bcrypt:Bcrypt, 
+    private val jwt:Jwt, 
 
 ){
     @GetMapping("/hi")
@@ -46,6 +47,12 @@ class TestController(
     fun bind2(@RequestBody req:UserVo):ResponseEntity<User> {
         req.password = bcrypt.hashPassword(req.password);
         return ResponseEntity(req.bind(), HttpStatus.OK);
+    }
+
+    @PostMapping("issuetoken")
+    fun issuetoken(@RequestBody req:UserVo):ResponseEntity<ViewToken> {
+        var token = ViewToken(jwt.CreateToken(req.id, req.password))
+        return ResponseEntity(token, HttpStatus.OK);
     }
 
 }
