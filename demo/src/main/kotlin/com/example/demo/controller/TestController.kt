@@ -39,12 +39,12 @@ class TestController(
     }
 
     @PostMapping("/bind")
-    fun bind(@RequestBody req:UserVo):ResponseEntity<User> {
+    fun bind(@RequestBody req:UserVo):ResponseEntity<PreUser> {
         return ResponseEntity(req.bind(), HttpStatus.OK);
     }
 
     @PostMapping("/bind2")
-    fun bind2(@RequestBody req:UserVo):ResponseEntity<User> {
+    fun bind2(@RequestBody req:UserVo):ResponseEntity<PreUser> {
         req.password = bcrypt.hashPassword(req.password);
         return ResponseEntity(req.bind(), HttpStatus.OK);
     }

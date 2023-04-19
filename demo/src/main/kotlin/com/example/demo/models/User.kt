@@ -25,10 +25,16 @@ data class User(
     var refreshToken: String = "",
 
     @CreatedDate
-    @Column(name = "createdAt", nullable = false)
+    @Column(name = "createdat", nullable = false)
     var createdAt: LocalDateTime = LocalDateTime.now(),
 
     @LastModifiedDate
-    @Column(name = "updatedAt", nullable = false)
+    @Column(name = "updatedat", nullable = false)
     var updatedAt: LocalDateTime = LocalDateTime.now()
-)
+) {
+    fun output(token:String): LoginVo {
+        var output = LoginVo(token, refreshToken)
+        return output
+    }
+}
+data class LoginVo(var xauth:String, var rxauth: String)
