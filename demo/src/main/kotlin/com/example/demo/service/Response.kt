@@ -32,6 +32,11 @@ class Response {
 		// 에러 핸들러
     @ExceptionHandler(Exception::class)
     fun Ereply(e: Exception): ResponseEntity<Any> {
+        val message = e.message
+        if (message != null && message.contains("JWT expired")) {
+            val map = mapOf("expired" to true)
+            return ResponseEntity(map, HttpStatus.OK)
+        }
         val map = mapOf("error" to e.message)
         return ResponseEntity(map, HttpStatus.OK)
     }

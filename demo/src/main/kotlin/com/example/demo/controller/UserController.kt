@@ -68,5 +68,15 @@ class UserController(
         }
     }
 
+    @GetMapping("/token/value")
+    fun header_token_value(@RequestHeader(value="xauth") token: String): ResponseEntity<Any> {
+        try {
+            val value = jwt.VerifyToken(token)
+            return r.Reply(value)
+        } catch(e:Exception) {
+            return r.Ereply(e)
+        }
+    }
+
 
 }
