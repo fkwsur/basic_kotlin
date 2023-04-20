@@ -11,6 +11,7 @@ import com.example.demo.models.*;
 import com.example.demo.utills.*;
 import com.example.demo.repository.*;
 import lombok.extern.slf4j.Slf4j;
+import kotlinx.coroutines.*
 
 @Slf4j
 @Controller
@@ -103,6 +104,17 @@ class UserController(
         }catch(e:Exception) {
             return r.Ereply(e)
         }
+    }
+
+    @GetMapping("/coroutine")
+    fun koroutine_test(): ResponseEntity<Any> {
+        GlobalScope.launch { //코루틴 시작
+            for (i in 1..10) {
+                println("in coroutine $i")
+            }
+        }   
+        println("<><><>this<><><>")
+        return ResponseEntity("ok", HttpStatus.OK)
     }
 
 
