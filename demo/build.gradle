@@ -35,6 +35,8 @@ dependencies {
 	implementation 'com.slack.api:bolt-servlet:1.18.0'
 	implementation 'com.slack.api:bolt-jetty:1.18.0'
 	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+	implementation 'com.amazonaws:aws-java-sdk-s3:1.12.103'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'mysql:mysql-connector-java'
