@@ -33,3 +33,13 @@ data class Board(
     @Column(name = "updatedAt", nullable = false)
     var updatedAt: LocalDateTime = LocalDateTime.now()
 )
+
+data class MyBoard(
+    val id: String,
+    val user_id: String,
+    val nickname: String,
+    val title: String,
+    val description: String,
+    val createdAt: LocalDateTime,
+    val updatedAt: LocalDateTime
+)
